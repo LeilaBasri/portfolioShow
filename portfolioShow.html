@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Display</title>
+<style>
+  .portfolio-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 300px; /* Set a fixed height for the container */
+  }
+  .portfolio {
+    flex: 0 0 auto;
+    width: 12.5%; /* 100% divided by 8 (number of portfolios) */
+    transition: transform 0.5s ease-in-out;
+  }
+</style>
+</head>
+<body>
+
+<div class="portfolio-container" id="portfolioContainer">
+  <div class="portfolio">Portfolio 1</div>
+  <div class="portfolio">Portfolio 2</div>
+  <div class="portfolio">Portfolio 3</div>
+  <div class="portfolio">Portfolio 4</div>
+  <div class="portfolio">Portfolio 5</div>
+  <div class="portfolio">Portfolio 6</div>
+  <div class="portfolio">Portfolio 7</div>
+  <div class="portfolio">Portfolio 8</div>
+</div>
+
+<script>
+  const portfolios = document.querySelectorAll('.portfolio');
+  let currentIndex = 0;
+
+  function shiftPortfolio() {
+    currentIndex = (currentIndex + 1) % portfolios.length;
+    const shiftAmount = -(currentIndex * 100);
+    document.getElementById('portfolioContainer').style.transform = `translateX(${shiftAmount}%)`;
+  }
+
+  setInterval(shiftPortfolio, 2000); // Change portfolio every 2 seconds
+</script>
+
+</body>
+</html>
